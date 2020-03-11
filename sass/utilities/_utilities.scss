@@ -1,0 +1,46 @@
+//////////////////////////////////////////////////
+////  Utilities  /////////////////////////////////
+//////////////////////////////////////////////////
+
+.left	{ float: left; }
+.right	{ float: right; }
+
+.align-left		{ text-align: left; }
+.align-right	{ text-align: right; }
+.align-center	{ text-align: center; }
+
+.fill-blue		{ background-color: $main-blue !important; }
+.fill-red		{ background-color: $main-red !important; }
+.fill-yellow	{ background-color: $main-yellow !important; }
+.fill-green		{ background-color: $main-green !important; }
+.fill-violet	{ background-color: $main-violet !important; }
+
+.heading-f-family { font-family: $f-family-heading; }
+
+ul.social {
+	li {
+		line-height: $baseline + ($baseline / 3);
+		margin-right: 9px;
+		
+		&:last-child {
+			margin-right: 0;
+		}
+		
+		i {
+			font-size: 18px;
+		}
+	}
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Section Media Queries  /////////////////////
+//////////////////////////////////////////////////
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	.stuck { position: fixed !important; top: 0 !important; }
+	.absolute { position: absolute !important; }
+}

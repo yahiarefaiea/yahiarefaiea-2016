@@ -1,0 +1,186 @@
+//////////////////////////////////////////////////
+////  Contact Layout  ////////////////////////////
+//////////////////////////////////////////////////
+
+#contact {
+	overflow: hidden;
+	text-align: center;
+	height: auto;
+	min-height: 100%;
+	
+	form {
+		margin-bottom: $baseline;
+		
+		.btn {
+			width: 100%;
+		}
+	}
+	
+	ul.social {
+		margin-bottom: ($baseline / 3) * 2;
+	}
+	
+	p.alt {
+		@extend .heading-f-family;
+		font-weight: 400;
+		margin-bottom: 0;
+		
+		a {
+			font-size: $f-size-regular;
+		}
+	}
+}
+
+#contact {
+	input, textarea, hr,
+	ul.social li,
+	.links p.alt {
+		@include opacity(0);
+		@include translateX(50px);
+	}
+}
+
+#contact #credit {
+	p {
+		height: $ball-hover;
+		@include translateY(-($baseline * 3.5));
+		
+		@extend .heading-f-family;
+		text-align: center;
+		font-size: 22px;
+		font-weight: 700;
+		text-transform: uppercase;
+		line-height: $ball-hover;
+		letter-spacing: 20px;
+		
+		color: darken($text-regular-alt, 8%);
+		@include text-shadow($shadow-bg);
+		overflow: hidden;
+		visibility: hidden;
+		@include opacity(0);
+		
+		@include transition(all .5s ease-out);
+		
+		&.resume {
+			
+			i { padding: 0 6px 0 2px; }
+			
+			a:hover,
+			a:focus {
+				color: $main-violet;
+			}
+		}
+		
+		i { padding: 0 2px; }
+		&:not(.resume) i { color: darken($text-regular-alt, 14%); }
+		
+		a.sass:hover, a.sass:focus { color: #C69; }
+		a.compass:hover, a.compass:focus { color: #FB292D; }
+	}
+}
+
+
+/* Transitions */
+
+#contact  {
+	.hr1, input[name="name"]		{ @include transition(all ($main-tran-dur / 2) + .06s ease-out .06s); }
+	.hr2, input[name="email"]		{ @include transition(all ($main-tran-dur / 2) + .09s ease-out .09s); }
+	.hr3, input[name="subject"]		{ @include transition(all ($main-tran-dur / 2) + .12s ease-out .12s); }
+	.hr4, input[name="budget"]		{ @include transition(all ($main-tran-dur / 2) + .15s ease-out .15s); }
+	.hr5, textarea[name="message"]	{ @include transition(all ($main-tran-dur / 2) + .15s ease-out .15s); }
+		  input[type="submit"]		{ @include transition(all ($main-tran-dur / 2) + .18s ease-out .18s); }
+}
+
+#contact ul.social li {
+	&:nth-child(1) { @include transition(all ($main-tran-dur / 2) + .21s ease-out .21s); }
+	&:nth-child(2) { @include transition(all ($main-tran-dur / 2) + .24s ease-out .24s); }
+	&:nth-child(3) { @include transition(all ($main-tran-dur / 2) + .27s ease-out .27s); }
+	&:nth-child(4) { @include transition(all ($main-tran-dur / 2) + .3s ease-out .3s); }
+	&:nth-child(5) { @include transition(all ($main-tran-dur / 2) + .33s ease-out .33s); }
+}
+
+#contact .links p.alt {
+	&:nth-child(1) { @include transition(all ($main-tran-dur / 2) + .36s ease-out .36s); }
+	&:nth-child(2) { @include transition(all ($main-tran-dur / 2) + .39s ease-out .39s); }
+}
+
+
+/* when Active */
+
+#contact.active {
+	input, textarea, hr,
+	ul.social li,
+	.links p.alt {
+		@include opacity(1);
+		@include translateX(0);
+	}
+	
+	#credit p {
+		font-size: 12px;
+		letter-spacing: 0;
+		visibility: visible;
+		@include opacity(1);
+		
+		@include transition(all .5s ease-out .68s);
+		
+		&.resume {
+			font-size: $f-size-small;
+			
+			&:before { content: "— "; }
+			&:after { content: " —"; }
+		}
+	}
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Contact Media Queries  /////////////////////
+//////////////////////////////////////////////////
+
+/* 481px Min Width */
+@media (min-width: 481px) {}
+
+/* 768px Min Width */
+@media (min-width: 768px) {}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	#contact {
+		padding-bottom: $baselineX2;
+	}
+	
+	#contact #credit {
+		display: block;
+		position: fixed;
+		bottom: ($ball-hover / 2);
+		right: $nav-right;
+		@include rotate(90deg);
+		
+		p {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: -220px;
+			width: 320px;
+			@include translateY(0);
+			
+			text-align: right;
+			cursor: vertical-text;
+			
+			&.resume {
+				display: none;
+			}
+		}
+	}
+	
+	#contact.active {
+		#credit p {
+			right: 0;
+		}
+	}
+}
+
+/* 1200px Min Width */
+@media (min-width: 1200px) {}

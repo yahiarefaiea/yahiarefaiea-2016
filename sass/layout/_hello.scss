@@ -1,0 +1,466 @@
+//////////////////////////////////////////////////
+////  Hello Settings  ////////////////////////////
+//////////////////////////////////////////////////
+
+$hello-width: 320px;
+
+$logo-size: 180px;
+$logo-b-size: 10px;
+
+$pre-size: 52px;
+$pre-position: (($logo-size - $pre-size) / 2) + $logo-b-size + ($baseline * 4);
+
+$pre-cir-size: 16px;
+$pre-cir-big: 20px;
+$pre-cir-small: 12px;
+$pre-cir-base: ($pre-size - $pre-cir-size) / 2;
+$pre-cir-opacity: .64;
+
+
+
+/* Animations & Transitions */
+
+// Infinite
+$pre-dur: 5s;
+$pre-cir-dur: $pre-dur / 2;
+
+
+// When Ready
+$r-pre-dur: $main-tran-dur;
+
+$r-logo-dur: .75s;
+
+$r-logo-b-dur: $r-logo-dur * 2;
+$r-logo-b-del: $r-logo-dur;
+
+$r-shadow-dur: .3s;
+$r-shadow-del: $r-logo-b-del + $r-logo-b-dur - $r-shadow-dur;
+
+$r-img-dur: $main-tran-dur;
+$r-img-del: $r-logo-b-del + $r-logo-b-dur - $r-img-dur;
+
+$r-separator-dur: $main-tran-dur;
+$r-separator-del: $r-logo-dur + $r-logo-b-dur;
+
+$r-above-dur: .8s;
+$r-above-del: $r-separator-del + $r-separator-dur;
+
+$r-under-dur: $r-above-dur / 2;
+$r-under-del: $r-above-del + ($r-above-dur / 2);
+
+
+
+
+//////////////////////////////////////////////////
+////  Hello Layout  //////////////////////////////
+//////////////////////////////////////////////////
+
+#jpreContent {
+	position: absolute;
+	background-color: transparent;
+	z-index: 8;
+}
+
+#jpreLoader {
+	width: 100%;
+	text-align: center;
+}
+
+#jprePercentage {
+	top: $pre-position + $pre-size + ($baseline * 1.5) + $logo-b-size + 42px;
+	@extend .heading-f-family;
+	@extend .small;
+	font-weight: 400;
+	color: $text-regular;
+	@include text-shadow($shadow-text);
+}
+
+#hello {
+	overflow: hidden;
+}
+
+
+/* Hello */
+
+.hello {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	padding-top: $logo-b-size;
+	padding-left: 15px;
+	padding-right: 15px;
+	top: 13%;
+}
+
+
+
+/* Preloader */
+
+.pre {
+	display: block;
+	position: absolute;
+	top: $pre-position;
+	left: 50%;
+	@include transform(translateX(-50%) rotate(-45deg));
+	width: $pre-size;
+	height: $pre-size;
+	margin: 0 auto;
+	@include animation(pre $pre-dur linear infinite);
+}
+
+@include keyframes(pre) {
+	to {
+		@include transform(translateX(-50%) rotate(-45deg + 360deg));
+	}
+}
+
+.pre-circle {
+	display: block;
+	position: absolute;
+	width: $pre-cir-size;
+	height: $pre-cir-size;
+	@include border-radius(50%);
+	@include opacity($pre-cir-opacity);
+}
+
+.pre,
+.pre-circle,
+.pre-text {
+	@include transition(all $r-pre-dur ease-out);
+}
+
+.pre-circle.fill-blue {
+	top: $pre-cir-base;
+	left: $pre-cir-base;
+	@include animation(preBlue $pre-cir-dur ease-in-out infinite);
+}
+@include keyframes(preBlue) {
+	25% { top: 0;				left: 0;				width: $pre-cir-big;		height: $pre-cir-big;		@include opacity(1); }
+	50% { top: $pre-cir-base;	left: $pre-cir-base;	width: $pre-cir-size;		height: $pre-cir-size;		@include opacity($pre-cir-opacity); }
+	75% { top: 0;				left: 0;				width: $pre-cir-small;		height: $pre-cir-small;		@include opacity(1); }
+}
+
+.pre-circle.fill-red {
+	top: $pre-cir-base;
+	right: $pre-cir-base;
+	@include animation(preRed $pre-cir-dur ease-in-out infinite);
+}
+@include keyframes(preRed) {
+	25% { top: 0;				right: 0;				width: $pre-cir-small;		height: $pre-cir-small;		@include opacity(1); }
+	50% { top: $pre-cir-base;	right: $pre-cir-base;	width: $pre-cir-size;		height: $pre-cir-size;		@include opacity($pre-cir-opacity); }
+	75% { top: 0;				right: 0;				width: $pre-cir-big;		height: $pre-cir-big;		@include opacity(1); }
+}
+
+.pre-circle.fill-yellow {
+	bottom: $pre-cir-base;
+	right: $pre-cir-base;
+	@include animation(preYellow $pre-cir-dur ease-in-out infinite);
+}
+@include keyframes(preYellow) {
+	25% { bottom: 0;				right: 0;				width: $pre-cir-big;		height: $pre-cir-big;		@include opacity(1); }
+	50% { bottom: $pre-cir-base;	right: $pre-cir-base;	width: $pre-cir-size;		height: $pre-cir-size;		@include opacity($pre-cir-opacity); }
+	75% { bottom: 0;				right: 0;				width: $pre-cir-small;		height: $pre-cir-small;		@include opacity(1); }
+}
+
+.pre-circle.fill-green {
+	bottom: $pre-cir-base;
+	left: $pre-cir-base;
+	@include animation(preGreen $pre-cir-dur ease-in-out infinite);
+}
+@include keyframes(preGreen) {
+	25% { bottom: 0;				left: 0;				width: $pre-cir-small;		height: $pre-cir-small;		@include opacity(1); }
+	50% { bottom: $pre-cir-base;	left: $pre-cir-base;	width: $pre-cir-size;		height: $pre-cir-size;		@include opacity($pre-cir-opacity); }
+	75% { bottom: 0;				left: 0;				width: $pre-cir-big;		height: $pre-cir-big;		@include opacity(1); }
+}
+
+.pre-text {
+	display: inline-block;
+	position: absolute;
+	top: $pre-position + $pre-size + ($baseline * 1.5);
+	left: 0;
+	width: 100%;
+	text-transform: uppercase;
+	text-align: center;
+	@extend .small;
+	@extend .italic;
+	line-height: 19px;
+}
+
+
+
+/* Logo */
+
+.logo {
+	display: block;
+	position: relative;
+	width: $pre-cir-size;
+	height: $pre-cir-size;
+	@include border-radius(50%);
+	margin: 0 auto;
+	margin-top: (($logo-size - $pre-size) / 2) + $pre-cir-base;
+	margin-bottom: $logo-b-size;
+	background-color: $bg-light;
+	@include opacity(0);
+	@include transition(all $r-logo-dur ease-out);
+}
+
+.logo-b {
+	display: block;
+	position: absolute;
+	top: -$logo-b-size;
+	left: -$logo-b-size;
+	width: $logo-size;
+	height: $logo-size;
+	@include box-sizing(content-box);
+	border: $logo-b-size solid transparent;
+	@include border-radius(50%);
+	@include rotate(45deg);
+	@include opacity(0);
+	@include transition(all $r-logo-b-dur ease-out $r-logo-b-del);
+	
+	&.blue		{ border-left-color: $main-blue; }
+	&.red		{ border-left-color: $main-red; }
+	&.yellow	{ border-left-color: $main-yellow; }
+	&.green		{ border-left-color: $main-green; }
+	
+	&.shadow {
+		@include rotate(0);
+		@include transition(all $r-shadow-dur ease-out $r-shadow-del);
+	}
+}
+
+.logo > img {
+	display: block;
+	position: absolute;
+	width: $logo-size;
+	height: $logo-size;
+	@include border-radius(50%);
+	@include opacity(0);
+	@include transition(all $r-img-dur ease-in-out $r-img-del);
+}
+
+
+
+/* Texts */
+
+.text {
+	display: block;
+	text-align: center;
+	overflow: hidden;
+	text-transform: uppercase;
+	
+	> span {
+		display: inline-block;
+		width: 100%;
+		color: $text-regular-alt;
+	}
+}
+
+.text.above {
+	width: 100%;
+	height: 113px;
+	padding-top: $baseline + ($baseline / 3);
+	@extend .h3;
+	
+	> span {
+		margin-top: 85px;
+		line-height: $baseline * 2.5;
+		
+		@include transition(all $r-above-dur ease-out $r-above-del);
+	}
+	
+	p, h1 {
+		display: inline;
+		vertical-align: bottom;
+	}
+}
+
+.hello-separator {
+	margin: 0 auto;
+	width: 0;
+	@include transition(all $r-separator-dur ease-in-out $r-separator-del);
+}
+
+.text.under {
+	@extend .small;
+	@extend .italic;
+	padding-top: $baseline;
+	line-height: 16px;
+	
+	> span {
+		@include translateY(-50px);
+		@include transition(all $r-under-dur ease-out $r-under-del);
+	}
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Hello Transitions  /////////////////////////
+//////////////////////////////////////////////////
+
+/* Preloader */
+
+.hello.ready .pre {
+	top: $pre-position + ($pre-size / 2);
+}
+
+.hello.ready .pre,
+.hello.ready .pre-circle {
+	width: 0;
+	height: 0;
+	@include opacity(0);
+}
+
+.hello.ready .pre-text {
+	@include opacity(0);
+	padding-top: 198px;
+	line-height: 52px;
+	font-size: 1px;
+}
+
+
+
+/* Logo */
+
+.hello.ready .logo {
+	width: $logo-size;
+	height: $logo-size;
+	margin-top: 0;
+	@include opacity(1);
+}
+
+.hello.ready .logo-b {
+	@include opacity(1);
+}
+
+.hello.ready .logo-b.blue {
+	@include rotate(135deg);
+}
+.hello.ready .logo-b.red {
+	@include rotate(225deg);
+}
+.hello.ready .logo-b.yellow {
+	@include rotate(315deg);
+}
+.hello.ready .logo-b.green {
+	@include rotate(405deg);
+}
+
+.hello.ready .logo-b.shadow {
+	@include box-shadow($shadow-bg);
+}
+
+.hello.ready .logo > img {
+	@include opacity(1);
+}
+
+
+
+/* Texts */
+
+.hello.ready .hello-separator {
+	width: 100%;
+}
+
+.hello.ready .text.above > span {
+	margin-top: 0;
+	line-height: 32px;
+}
+
+.hello.ready .text.under > span {
+	@include translateY(0);
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Hello Media Queries  ///////////////////////
+//////////////////////////////////////////////////
+
+/* 480px Max Width Only */
+@media only screen and (max-width: 480px) {
+	.text.above .changeable h1 {
+		font-size: $heading2-f-size;
+		color: $text-light;
+	}
+}
+
+/* 991px Max Width Only */
+@media only screen and (max-width: 991px) {
+	#hello {
+		padding-top: $baseline * 4;
+		padding-bottom: $baseline * 4;
+		min-height: 100%;
+	}
+}
+
+/* 481px Min Width */
+@media (min-width: 481px) {
+	
+	.hello {
+		width: $hello-width;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	$logo-size: 240px;
+	$pre-position: (($logo-size - $pre-size) / 2) + $logo-b-size + ($baseline * 4);
+	
+	#jprePercentage {
+		top: $pre-position + $pre-size + ($baseline * 1.5) + $logo-b-size + 42px;
+	}
+	.pre {
+		top: $pre-position;
+	}
+	.pre-text {
+		top: $pre-position + $pre-size + ($baseline * 1.5);
+	}
+	.hello.ready .pre {
+		top: $pre-position + ($pre-size / 2);
+	}
+	
+	.logo {
+		margin-top: (($logo-size - $pre-size) / 2) + $pre-cir-base;
+	}
+	.logo-b {
+		width: $logo-size;
+		height: $logo-size;
+	}
+	.logo > img {
+		width: $logo-size;
+		height: $logo-size;
+	}
+	.hello.ready .logo {
+		width: $logo-size;
+		height: $logo-size;
+	}
+	
+	.text.above {
+		width: 480px;
+		margin-left: (-480px + $hello-width) / 2;
+		font-size: $heading2-f-size;
+	}
+}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	$logo-size: 240px;
+	$pre-position: (($logo-size - $pre-size) / 2) + $logo-b-size;
+	
+	#jprePercentage {
+		top: $pre-position + $pre-size + ($baseline * 1.5) + $logo-b-size + 42px;
+	}
+	.pre {
+		top: $pre-position;
+	}
+	.pre-text {
+		top: $pre-position + $pre-size + ($baseline * 1.5);
+	}
+	.hello.ready .pre {
+		top: $pre-position + ($pre-size / 2);
+	}
+}

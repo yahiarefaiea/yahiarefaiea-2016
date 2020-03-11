@@ -1,0 +1,182 @@
+//////////////////////////////////////////////////
+////  Typography Settings  ///////////////////////
+//////////////////////////////////////////////////
+
+/* 1.Anchor */
+$anchor-transition: .2s;
+$anchor-color: $text-light;
+$anchor-color-hov: $main-blue;
+
+/* 2.Heading */
+$heading-f-family: $f-family-heading;
+$heading-f-weight: 700;
+$heading-color: $text-light;
+$heading-small-f-size: 80%;
+
+$heading1-f-size: 24px;
+$heading2-f-size: 18px;
+$heading3-f-size: $f-size-regular-alt;
+$heading4-f-size: 1px; // Not in Used
+$heading5-f-size: 1px; // Not in Used
+$heading6-f-size: 1px; // Not in Used
+
+/* 3.Paragraph */
+$paragraph-m-bot: 6px;
+
+/* 4.Small */
+$small-f-size: $f-size-small;
+$small-color: $text-regular-alt;
+
+/* 5.Strong */
+$strong-f-weight: 700;
+
+/* 6.Italic */
+$italic-f-style: italic;
+
+/* 7.List */
+$ul-style-type: disc;
+$ol-style-type: decimal-leading-zero;
+
+
+
+
+//////////////////////////////////////////////////
+////  Typography Layout  /////////////////////////
+//////////////////////////////////////////////////
+
+/* 1.Anchor */
+
+a {
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+	@include transition(all $anchor-transition ease-out);
+	color: $anchor-color;
+	
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		outline: none;
+		color: $anchor-color-hov;
+	}
+}
+
+// When Main Color Class is Added to the Section
+
+.section, .section-alt {
+	&.blue a:hover,
+	&.blue a:focus { color: $main-blue; }
+	
+	&.red a:hover,
+	&.red a:focus { color: $main-red; }
+	
+	&.yellow a:hover,
+	&.yellow a:focus { color: $main-yellow; }
+	
+	&.green a:hover,
+	&.green a:focus { color: $main-green; }
+}
+
+
+/* 2.Heading */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $heading-f-family;
+	font-weight: $heading-f-weight;
+	color: $heading-color;
+	
+	small, .small {
+		font-size: $heading-small-f-size;
+	}
+}
+
+h1, .h1 {
+	text-transform: uppercase;
+	font-size: $heading1-f-size;
+}
+
+h2, .h2 {
+	font-size: $heading2-f-size;
+}
+
+h3, .h3 {
+	font-size: $heading3-f-size;
+}
+
+h4, .h4 {
+	font-size: $heading4-f-size;
+}
+
+h5, .h5 {
+	font-size: $heading5-f-size;
+}
+
+h6, .h6 {
+	font-size: $heading6-f-size;
+}
+
+
+/* 3.Paragraph */
+
+p, .p {
+	margin-bottom: $paragraph-m-bot;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+	
+	&.alt {
+		font-size: $f-size-regular-alt;
+	}
+}
+
+
+/* 4.Small */
+
+small, .small {
+	font-size: $small-f-size;
+	color: $small-color;
+}
+
+
+/* 5.Strong */
+
+b, strong, .strong {
+	font-weight: $strong-f-weight;
+}
+
+
+/* 6.Italic */
+
+i, em, .italic {
+	font-style: $italic-f-style;
+}
+
+
+/* 7.List */
+
+ul.list,
+ol.list {
+	padding-left: 24px;
+}
+
+ul.list li,
+ol.list li {
+	padding-left: 6px;
+}
+
+ul.list,
+ul.list li {
+	list-style-type: $ul-style-type;
+}
+
+ol.list,
+ol.list li {
+	list-style-type: $ol-style-type;
+}
+
+ul.list-inline li,
+ol.list-inline li {
+	display: inline-block;
+}

@@ -1,0 +1,62 @@
+//////////////////////////////////////////////////
+////  Project Settings  //////////////////////////
+//////////////////////////////////////////////////
+
+/* Colors */
+
+// Default
+$black: #000;
+$white: #fff;
+
+// Main
+$main-blue: #53a2be;
+$main-red: #d9594c;
+$main-yellow: #e0a458;
+$main-green: #419d78;
+$main-violet: #593f62;
+
+// Backgrounds
+$bg-light: #f0f0f0;
+$bg-light-alt: #ccc;
+$bg-dark: #1a1a1a;
+$bg-dark-alt: #282828;
+
+// Texts
+$text-light: #f0f0f0;
+$text-light-alt: #eee;
+$text-regular: #ddd;
+$text-regular-alt: #ccc;
+
+
+
+// Shadows
+$shadow-bg: 5px 5px 8px rgba(0,0,0,.6);
+$shadow-text: 3px 3px 6px rgba(0,0,0,.34);
+
+
+
+// Transition
+$main-tran-dur: .6s;
+
+
+
+/* Fonts */
+
+// Sizes
+$f-size-regular: 16px;
+$f-size-regular-alt: 14px;
+$f-size-small: 13px;
+
+// Families
+$f-family-heading: 'Quicksand', 'Open Sans', Helvetica, Arial, sans-serif;
+$f-family-body: 'Open Sans', Helvetica, Arial, sans-serif;
+
+
+
+/* Baselines */
+
+$baseline: 21px;
+$baselineX2: $baseline * 2;			// 42px
+//	$baseline + ($baseline / 3);	// 28px
+//	$baseline / 3;					// 7px
+//	($baseline / 3) * 2;			// 14px

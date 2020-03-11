@@ -1,0 +1,291 @@
+//////////////////////////////////////////////////
+////  Skills Settings  ///////////////////////////
+//////////////////////////////////////////////////
+
+$numOfSkills: 5;
+$numOfColumns: 6;
+
+// Table Head
+$thead-m-bot: ($baseline / 3) * 2;
+
+// Table Body
+$tbody-l-height: 56px;
+
+// Ball
+$ball-1-size: 12px;
+$ball-2-size: 16px;
+$ball-3-size: 20px;
+$ball-4-size: 26px;
+$ball-5-size: 32px;
+
+
+
+
+//////////////////////////////////////////////////
+////  Skills Layout  /////////////////////////////
+//////////////////////////////////////////////////
+
+/* Column Width */
+
+#skills {
+	th, td {
+		width: (100% / $numOfColumns);
+	}
+}
+
+
+/* Table Head */
+
+#skills thead {
+	display: none;
+	
+	th {
+		@extend .small;
+		font-weight: 400;
+		text-transform: uppercase;
+		padding-bottom: $thead-m-bot;
+	}
+}
+
+
+/* Table Body */
+
+#skills tbody {
+	line-height: $tbody-l-height;
+	
+	td {
+		vertical-align: middle;
+
+		&:first-child {
+			@extend .h3;
+			font-size: 15px;
+		}
+	}
+}
+
+
+/* Ball */
+
+#skills {
+	.ball {
+		display: block;
+		width: $ball-1-size;
+		height: $ball-1-size;
+		margin-left: 17px;
+		@include border-radius(50%);
+		background-color: $bg-light-alt;
+		@include box-shadow($shadow-bg);
+	}
+}
+
+
+/* Stage */
+
+#skills .stage-wrapper {
+	display: block;
+	position: relative;
+	width: 100%;
+	
+	.stage {
+		display: block;
+		width: 100%;
+		margin-bottom: $baseline * 3;
+		@include transition(all ($main-tran-dur / 2) ease-out);
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+#skills .stage {
+	.part ul {
+		margin-bottom: $baseline + ($baseline / 3);
+		
+		li {
+			font-size: $f-size-regular-alt;
+			font-weight: 400;
+			
+			&:after {
+				content: ' - ';
+				padding: 0 4px;
+			}
+			
+			&:last-child:after {
+				content: '';
+				padding: 0;
+			}
+		}
+	}
+}
+
+
+/* Transition */
+
+#skills .stage {
+	@include transition(all $main-tran-dur ease-out);
+	
+	h2 { @include transition(all $main-tran-dur + .06s ease-out .06s); }
+}
+
+#skills .stage {
+	thead th {
+		&:nth-child(1) { @include transition(all $main-tran-dur + .06s ease-out .06s); } // dur = .6s + .06s , del = .06s
+		&:nth-child(2) { @include transition(all $main-tran-dur + .09s ease-out .09s); }
+		&:nth-child(3) { @include transition(all $main-tran-dur + .12s ease-out .12s); }
+		&:nth-child(4) { @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		&:nth-child(5) { @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		&:nth-child(6) { @include transition(all $main-tran-dur + .21s ease-out .21s); }
+	}
+	
+	tbody tr:nth-child(1) td {
+		&:nth-child(1) { @include transition(all $main-tran-dur + .09s ease-out .09s); }
+		&:nth-child(2) { @include transition(all $main-tran-dur + .12s ease-out .12s); }
+		&:nth-child(3) { @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		&:nth-child(4) { @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		&:nth-child(5) { @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		&:nth-child(6) { @include transition(all $main-tran-dur + .24s ease-out .24s); }
+	}
+	
+	tbody tr:nth-child(2) td {
+		&:nth-child(1) { @include transition(all $main-tran-dur + .12s ease-out .12s); }
+		&:nth-child(2) { @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		&:nth-child(3) { @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		&:nth-child(4) { @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		&:nth-child(5) { @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		&:nth-child(6) { @include transition(all $main-tran-dur + .27s ease-out .27s); }
+	}
+	
+	tbody tr:nth-child(3) td {
+		&:nth-child(1) { @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		&:nth-child(2) { @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		&:nth-child(3) { @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		&:nth-child(4) { @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		&:nth-child(5) { @include transition(all $main-tran-dur + .27s ease-out .27s); }
+		&:nth-child(6) { @include transition(all $main-tran-dur + .3s ease-out .3s); }
+	}
+	
+	tbody tr:nth-child(4) td {
+		&:nth-child(1) { @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		&:nth-child(2) { @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		&:nth-child(3) { @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		&:nth-child(4) { @include transition(all $main-tran-dur + .27s ease-out .27s); }
+		&:nth-child(5) { @include transition(all $main-tran-dur + .3s ease-out .3s); }
+		&:nth-child(6) { @include transition(all $main-tran-dur + .33s ease-out .33s); }
+	}
+}
+
+#skills .stage .part {
+	&:nth-child(1) {
+		ul li:nth-child(1)	{ @include transition(all $main-tran-dur + .09s ease-out .09s); }
+		ul li:nth-child(2)	{ @include transition(all $main-tran-dur + .12s ease-out .12s); }
+		ul li:nth-child(3)	{ @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		ul li:nth-child(4)	{ @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		ul li:nth-child(5)	{ @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		ul li:nth-child(6)	{ @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		ul li:nth-child(7)	{ @include transition(all $main-tran-dur + .27s ease-out .27s); }
+		ul li:nth-child(8)	{ @include transition(all $main-tran-dur + .3s ease-out .3s); }
+	}
+	
+	&:nth-child(2) {
+		h2					{ @include transition(all $main-tran-dur + .12s ease-out .12s); }
+		ul li:nth-child(1)	{ @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		ul li:nth-child(2)	{ @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		ul li:nth-child(3)	{ @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		ul li:nth-child(4)	{ @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		ul li:nth-child(5)	{ @include transition(all $main-tran-dur + .27s ease-out .27s); }
+		ul li:nth-child(6)	{ @include transition(all $main-tran-dur + .3s ease-out .3s); }
+		ul li:nth-child(7)	{ @include transition(all $main-tran-dur + .33s ease-out .33s); }
+		ul li:nth-child(8)	{ @include transition(all $main-tran-dur + .36s ease-out .36s); }
+	}
+	
+	&:nth-child(3) {
+		h2					{ @include transition(all $main-tran-dur + .15s ease-out .15s); }
+		ul li:nth-child(1)	{ @include transition(all $main-tran-dur + .18s ease-out .18s); }
+		ul li:nth-child(2)	{ @include transition(all $main-tran-dur + .21s ease-out .21s); }
+		ul li:nth-child(3)	{ @include transition(all $main-tran-dur + .24s ease-out .24s); }
+		ul li:nth-child(4)	{ @include transition(all $main-tran-dur + .27s ease-out .27s); }
+		ul li:nth-child(5)	{ @include transition(all $main-tran-dur + .3s ease-out .3s); }
+		ul li:nth-child(6)	{ @include transition(all $main-tran-dur + .33s ease-out .33s); }
+		ul li:nth-child(7)	{ @include transition(all $main-tran-dur + .36s ease-out .36s); }
+		ul li:nth-child(8)	{ @include transition(all $main-tran-dur + .39s ease-out .39s); }
+	}
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Skills Media Queries  //////////////////////
+//////////////////////////////////////////////////
+
+/* 481px Min Width */
+@media (min-width: 481px) {}
+
+/* 768px Min Width */
+@media (min-width: 768px) {}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	
+	/* Table Head */
+	#skills thead {
+		display: table-header-group;
+	}
+	
+	/* Ball */
+	#skills tbody td {
+		&:nth-child(3) .ball { width: $ball-2-size; height: $ball-2-size; margin-left: 15px; }
+		&:nth-child(4) .ball { width: $ball-3-size; height: $ball-3-size; margin-left: 13px; }
+		&:nth-child(5) .ball { width: $ball-4-size; height: $ball-4-size; margin-left: 10px; }
+		&:nth-child(6) .ball { width: $ball-5-size; height: $ball-5-size; margin-left: 7px; }
+	}
+	
+	/* Stage */
+	#skills .stage-wrapper {
+		.stage {
+			position: absolute;
+			visibility: hidden;
+			@include translateX(50px);
+		}
+	}
+	
+	#skills .stage {
+		h2, th, td, li {
+			@include opacity(0);
+			@include translateX(50px);
+		}
+	}
+	
+	/* Stage Active */
+	#skills .stage.active {
+		visibility: visible;
+		@include translateX(0);
+
+		h2, th, td, li {
+			@include opacity(1);
+			@include translateX(0);
+		}
+	}
+	
+	/* Skill When Stuck & Place */
+	#skills {
+		height: 100% * $numOfSkills;
+		overflow: hidden;
+		
+		.what_should_stuck.stuck.bottom {
+			height: 100% / $numOfSkills;
+		}
+	}
+	
+	#skills .place {
+		&#placeSkill1		{ top: 0%; }
+		&#placeSkill2		{ top: 20%; }
+		&#placeSkill3		{ top: 40%; }
+		&#placeSkill4		{ top: 60%; }
+		&#placeSkillBottom	{ top: 80%; }
+	}
+}
+
+/* 1200px Min Width */
+@media (min-width: 1200px) {}

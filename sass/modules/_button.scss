@@ -1,0 +1,80 @@
+//////////////////////////////////////////////////
+////  Button Settings  ///////////////////////////
+//////////////////////////////////////////////////
+
+$btn-display: block;
+$btn-width: 100%;
+$btn-padding: 11px $baseline + ($baseline / 3) 10px; // This is equal to : 11px 28px 10px
+$btn-border: none;
+$btn-border-radius: 0;
+$btn-transition: $anchor-transition;
+
+$btn-f-family: $f-family-heading;
+$btn-f-size: $f-size-regular-alt;
+$btn-f-weight: 700;
+
+$btn-bg: $main-blue;
+$btn-color: $bg-dark;
+$btn-bg-hov: $bg-light;
+$btn-color-hov: $bg-dark;
+
+
+
+
+//////////////////////////////////////////////////
+////  Button Layout  /////////////////////////////
+//////////////////////////////////////////////////
+
+.btn {
+	display: $btn-display;
+	width: $btn-width;
+	padding: $btn-padding;
+	border: $btn-border;
+	@include border-radius($btn-border-radius);
+	@include transition(all $btn-transition ease-out);
+	
+	vertical-align: middle;
+	text-align: center;
+	font-family: $btn-f-family;
+	font-size: $btn-f-size;
+	font-weight: $btn-f-weight;
+	cursor: pointer;
+	@include box-shadow($shadow-text);
+	
+	background-color: $btn-bg;
+	color: $btn-color;
+	
+	&:hover,
+	&:focus {
+		background-color: $btn-bg-hov;
+		color: $btn-color-hov;
+	}
+}
+
+// When Main Color Class is Added to the Section
+
+.section, .section-alt {
+	&.blue .btn {
+		background-color: $main-blue;
+		&:hover,
+		&:focus { background-color: $btn-bg-hov; }
+	}
+	
+	&.red .btn {
+		background-color: $main-red;
+		&:hover,
+		&:focus { background-color: $btn-bg-hov; }
+	}
+	
+	&.yellow .btn {
+		background-color: $main-yellow;
+		&:hover,
+		&:focus { background-color: $btn-bg-hov; }
+	}
+	
+	&.green .btn {
+		background-color: $main-green;
+		&:hover,
+		&:focus { background-color: $btn-bg-hov; }
+	}
+}

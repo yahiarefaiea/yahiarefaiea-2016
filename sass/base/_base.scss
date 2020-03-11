@@ -1,0 +1,51 @@
+//////////////////////////////////////////////////
+////  Base Settings  /////////////////////////////
+//////////////////////////////////////////////////
+
+$body-f-family: $f-family-body;
+$body-f-size: $f-size-regular;
+$body-f-weight: 300;
+$body-line-h: $baseline;
+$body-bg: $bg-dark;
+$body-color: $text-regular;
+
+$selection-bg: $text-light;
+$selection-color: $bg-dark;
+
+
+
+
+//////////////////////////////////////////////////
+////  Base Layout  ///////////////////////////////
+//////////////////////////////////////////////////
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	position: relative;
+	font-family: $body-f-family;
+	font-size: $body-f-size;
+	font-weight: $body-f-weight;
+	line-height: $body-line-h;
+	background-color: $body-bg;
+	color: $body-color;
+	
+	-webkit-font-smoothing: antialiased;
+}
+
+img {
+	@include user-select(none);
+}
+
+::-moz-selection {
+	background: $selection-bg;
+	color: $selection-color;
+}
+
+::selection {
+	background: $selection-bg;
+	color: $selection-color;
+}

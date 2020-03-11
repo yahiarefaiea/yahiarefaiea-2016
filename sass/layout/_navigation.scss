@@ -1,0 +1,302 @@
+//////////////////////////////////////////////////
+////  Navigation Settings  ///////////////////////
+//////////////////////////////////////////////////
+
+$nav-top: 34%;
+$nav-right: 30px;
+
+$ball-default: 12px;
+$ball-active: 34px;
+$ball-hover: 46px;
+
+$ball-m-bot: $baseline;
+$ball-bg: $bg-light;
+$ball-color: $bg-dark;
+
+$nav-dur: $main-tran-dur;
+$nav-del: $r-under-del + $r-under-dur;
+
+
+
+
+//////////////////////////////////////////////////
+////  Navigation Layout  /////////////////////////
+//////////////////////////////////////////////////
+
+#navigation {
+	display: block;
+	position: fixed;
+	top: $nav-top;
+	right: -$nav-right;
+	z-index: 4;
+	
+	@include opacity(0);
+	@include translateY(-50%);
+	@include transition(all $nav-dur ease-out $nav-del);
+}
+
+#navigation ul {
+	display: block;
+	width: $ball-hover;
+	
+	li {
+		display: block;
+		margin-bottom: $ball-m-bot;
+		@include translateX($nav-right);
+		@include text-shadow(none);
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+		
+		[data-hint]:after {
+			text-transform: uppercase;
+		}
+	}
+}
+
+#navigation > ul > li {
+	&:nth-child(1) { @include transition(all $nav-dur + .05s ease-out $nav-del + .05s); }
+	&:nth-child(2) { @include transition(all $nav-dur + .15s ease-out $nav-del + .15s); }
+	&:nth-child(3) { @include transition(all $nav-dur + .25s ease-out $nav-del + .25s); }
+	&:nth-child(4) { @include transition(all $nav-dur + .35s ease-out $nav-del + .35s); }
+	&:nth-child(5) { @include transition(all $nav-dur + .45s ease-out $nav-del + .45s); }
+}
+
+
+/* Ball Default */
+
+#navigation ul li a {
+	display: block;
+	width: $ball-default;
+	height: $ball-default;
+	margin-left: ($ball-hover - $ball-default) / 2;
+	@include border-radius(50%);
+	background-color: $ball-bg;
+	color: $ball-color;
+	@include opacity(.8);
+	@include box-shadow($shadow-text);
+	
+	&.tiny {
+		width: 0;
+		height: 0;
+		margin-left: ($ball-hover - 0) / 2;
+		@include opacity(0);
+	}
+	
+	img, .fa {
+		display: block;
+		width: 100%;
+		height: 100%;
+		@include border-radius(50%);
+		@include opacity(0);
+		@include transition(all $anchor-transition ease-out);
+	}
+	
+	img {
+		padding: 12px;
+	}
+	
+	.fa {
+		font-size: 4px;
+		text-align: center;
+		line-height: $ball-default;
+	}
+}
+
+
+/* Ball Active and Hover */
+
+#navigation > ul > li {
+	&.active > a, & > a:hover, & > a.hover {
+		&.blue { @extend .fill-blue; }
+		&.red { @extend .fill-red; }
+		&.yellow { @extend .fill-yellow; }
+		&.green { @extend .fill-green; }
+		&.violet { @extend .fill-violet; }
+	}
+	
+	&.active > a, & > a:hover, & > a.hover:not(#resume) {
+		@include opacity(1);
+	}
+	
+	&.active > a, & > a:hover, & > a.hover:not(#resume), &.active > a:hover {
+		img, .fa {
+			@include opacity(1);
+		}
+		
+		img {
+			padding: 3px;
+		}
+	}
+}
+
+
+/* Ball Active */
+
+#navigation > ul > li {
+	&.active > a {
+		width: $ball-active;
+		height: $ball-active;
+		margin-left: ($ball-hover - $ball-active) / 2;
+		
+		.fa {
+			font-size: 15px;
+			line-height: $ball-active;
+		}
+	}
+}
+
+#navigation > ul > li {
+	&.active > a[href="#contact"] .fa {
+		padding-right: 1px;
+	}
+}
+
+
+/* Ball Hover */
+
+#navigation > ul > li {
+	& > a:hover, & > a.hover:not(#resume), &.active > a:hover {
+		width: $ball-hover;
+		height: $ball-hover;
+		margin-left: 0;
+		
+		.fa {
+			font-size: 20px;
+			line-height: $ball-hover;
+		}
+	}
+}
+
+#navigation > ul > li:last-child {
+	display: none;
+}
+
+#navigation > ul > li {
+	& > a[href="#skills"]:hover,
+	& > a[href="#skills"].hover,
+	&.active > a[href="#skills"]:hover .fa {
+		line-height: 48px;
+	}
+}
+
+#navigation > ul > li {
+	& > a[href="#contact"]:hover,
+	& > a[href="#contact"].hover,
+	&.active > a[href="#contact"]:hover .fa {
+		padding-right: 2px;
+	}
+}
+
+
+/* ul inside ul */
+
+#navigation ul li ul {
+	visibility: hidden;
+	
+	li {
+		margin: 0;
+		@include opacity(0);
+		
+		a {
+			width: 0;
+			height: 0;
+			margin-left: ($ball-hover - 0) / 2;
+		}
+		
+		a:hover, &.active a {
+			&.red { @extend .fill-red; }
+			&.yellow { @extend .fill-yellow; }
+		}
+	}
+}
+
+#navigation ul li ul {
+	&, li, li a {
+		@include transition(all $anchor-transition ease-out 0);
+	}
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Navigation Media Queries  //////////////////
+//////////////////////////////////////////////////
+
+/* 481px Min Width */
+@media (min-width: 481px) {
+	#navigation.ready {
+		right: $nav-right;
+		@include opacity(1);
+
+		li {
+			@include translateX(0);
+		}
+	}
+}
+
+/* 768px Min Width */
+@media (min-width: 768px) {}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	#navigation ul li.active ul {
+		visibility: visible;
+
+		li {
+			margin-bottom: ($ball-m-bot * .72);
+			@include opacity(.7);
+
+			&:first-child {
+				margin-top: ($ball-m-bot * .72);
+			}
+
+			a {
+				width: ($ball-default / 2);
+				height: ($ball-default / 2);
+				margin-left: ($ball-hover - ($ball-default / 2)) / 2;
+			}
+
+			a:hover, &.active a {
+				width: ($ball-default * .88);
+				height: ($ball-default * .88);
+				margin-left: ($ball-hover - ($ball-default * .88)) / 2;
+				@include opacity(1);
+			}
+		}
+	}
+
+	#navigation ul li.active ul {
+		&, li, li a {
+			@include transition(all $anchor-transition ease-out ($anchor-transition * 1.25));
+		}
+	}
+	
+	// Resume
+	#navigation > ul > li {
+		&:last-child {
+			display: block;
+		}
+		
+		a.hover#resume {
+			@include opacity(1);
+		}
+		
+		& > a.hover#resume {
+			width: $ball-hover;
+			height: $ball-hover;
+			margin-left: 0;
+
+			.fa {
+				@include opacity(1);
+				font-size: 20px;
+				line-height: $ball-hover;
+			}
+		}
+	}
+}
+
+/* 1200px Min Width */
+@media (min-width: 1200px) {}

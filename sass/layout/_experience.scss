@@ -1,0 +1,195 @@
+//////////////////////////////////////////////////
+////  Experience Settings  ///////////////////////
+//////////////////////////////////////////////////
+
+$numOfExp: 6;
+
+$exp-timeline-bg: rgba(204, 204, 204, 0.8); // $bg-light-alt with opacity = .8
+$exp-timeline-m: $baselineX2;
+
+$exp-timeline-size: 6px;
+$exp-ball-default: 18px;
+$exp-ball-active: 34px;
+$exp-ball-hover: 42px;
+
+
+
+
+//////////////////////////////////////////////////
+////  Experience Layout  /////////////////////////
+//////////////////////////////////////////////////
+
+/* Stage */
+
+#experience .stage-wrapper {
+	display: block;
+	position: relative;
+	width: 100%;
+	@extend .clearfix;
+	
+	.exp-timeline {
+		display: block;
+		position: relative;
+		width: 100%;
+		@include transition(height ($main-tran-dur / 2) ease-out, margin ($main-tran-dur / 2) ease-out);
+	}
+	
+	.stage {
+		display: block;
+		position: relative;
+		@include transition(all ($main-tran-dur / 2) ease-out);
+	}
+}
+
+
+/* Stage Content */
+
+#experience .stage {
+	.ball {
+		display: block;
+		position: absolute;
+		@include border-radius(50%);
+		@include transition(all $anchor-transition ease-out);
+	}
+	
+	.description {
+		display: block;
+		margin-bottom: $baseline + ($baseline / 3);
+		@include transition(all ($main-tran-dur / 2) ease-out);
+		
+		p.alt {
+			font-weight: 400;
+		}
+	}
+	&:last-child .description {
+		margin-bottom: 0;
+	}
+}
+
+#experience .fake_stage {
+	display: none;
+	visibility:hidden;
+	@include opacity(0);
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Experience Media Queries  //////////////////
+//////////////////////////////////////////////////
+
+/* 481px Min Width */
+@media (min-width: 481px) {}
+
+/* 768px Min Width */
+@media (min-width: 768px) {}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	
+	#experience .stage-wrapper {
+		.exp-timeline {
+			height: $exp-timeline-size;
+			background-color: $exp-timeline-bg;
+			@include border-radius($exp-timeline-size / 2);
+			margin: $exp-timeline-m 0;
+			@include box-shadow($shadow-text);
+		}
+		
+		.stage {
+			width: 20%;
+			float: left;
+			height: $exp-timeline-size;
+		}
+	}
+	
+	#experience .stage {
+		.ball {
+			top: -($exp-ball-default / 2) + ($exp-timeline-size / 2);
+			left: 0;
+			width: $exp-ball-default;
+			height: $exp-ball-default;
+			background-color: $bg-light-alt;
+			@include box-shadow($shadow-text);
+		}
+		
+		.description {
+			position: absolute;
+			left: 0;
+			width: 480px;
+			visibility: hidden;
+			margin-bottom: 0;
+			
+			&.top { bottom: $exp-timeline-size + $exp-timeline-m; }
+			&.bottom { top: $exp-timeline-size + $exp-timeline-m; }
+
+			h2, p {
+				@include opacity(0);
+				@include translateX(50px);
+			}
+			
+			h2	{ @include transition(all ($main-tran-dur / 2) + .06s ease-out .06s); }
+			p	{ @include transition(all ($main-tran-dur / 2) + .09s ease-out .09s); }
+		}
+	}
+	
+	#experience .stage-wrapper {
+		.stage:nth-child(1) .description { left: 0; }
+		.stage:nth-child(2) .description { left: -75%; }
+		.stage:nth-child(3) .description { left: -150%; }
+		.stage:nth-child(4) .description { left: -225%; }
+		.stage:nth-child(5) .description { left: -300%; }
+	}
+	
+	#experience .fake_stage {
+		display: block;
+		
+		.description {
+			width: 480px;
+		}
+	}
+	
+	// Experience Transitions
+	#experience .stage.active {
+		.ball {
+			top: -($exp-ball-active / 2) + ($exp-timeline-size / 2);
+			left: -($exp-ball-active - $exp-ball-default) / 2;
+			width: $exp-ball-active;
+			height: $exp-ball-active;
+			background-color: $main-yellow;
+			@include box-shadow($shadow-bg);
+		}
+
+		.description {
+			visibility: visible;
+
+			h2, p {
+				@include opacity(1);
+				@include translateX(0);
+			}
+		}
+	}
+	
+	// Experience When Stuck & Place
+	#experience {
+		height: 100% * $numOfExp;
+		overflow: hidden;
+		
+		.what_should_stuck.stuck.bottom {
+			height: 100% / $numOfExp;
+		}
+	}
+	
+	#experience .place {
+		&#placeExp1			{ top: (100% / $numOfExp) * 0; }
+		&#placeExp2			{ top: (100% / $numOfExp) * 1; }
+		&#placeExp3			{ top: (100% / $numOfExp) * 2; }
+		&#placeExp4			{ top: (100% / $numOfExp) * 3; }
+		&#placeExp5			{ top: (100% / $numOfExp) * 4; }
+		&#placeExpBottom	{ top: (100% / $numOfExp) * 5; }
+	}
+}
+
+/* 1200px Min Width */
+@media (min-width: 1200px) {}

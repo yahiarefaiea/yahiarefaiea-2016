@@ -1,0 +1,72 @@
+//////////////////////////////////////////////////
+////  Form Settings  /////////////////////////////
+//////////////////////////////////////////////////
+
+$input-display: block;
+$input-height: $baseline;
+$input-width: 100%;
+$input-padding: 10px $baseline + ($baseline / 3); // This is equal to : 10px 28px
+$input-border: none;
+$input-border-radius: 0;
+$input-transition: background-color $anchor-transition ease-out, color $anchor-transition ease-out, height $anchor-transition ease-out;
+
+$input-f-size: $f-size-regular-alt;
+
+$input-placeholder-color: $text-regular-alt;
+$input-bg: transparent;
+$input-color: $text-regular;
+$input-bg-foc: $input-bg;
+$input-color-foc: $text-light-alt;
+
+$input-m-bot: ($baseline / 3) * 2;
+
+
+
+
+//////////////////////////////////////////////////
+////  Form Layout  ///////////////////////////////
+//////////////////////////////////////////////////
+
+input, button, select, textarea,
+input:focus, button:focus, select:focus, textarea:focus {
+	outline: 0;
+}
+
+form {
+	input:not([type="submit"]), textarea {
+		display: $input-display;
+		width: $input-width;
+		padding: $input-padding;
+		border: $input-border;
+		@include border-radius($input-border-radius);
+		@include transition($input-transition);
+		resize: none;
+		vertical-align: middle;
+		font-size: $input-f-size;
+		@include text-shadow($shadow-text);
+		
+		@include input-placeholder {
+			color: $input-placeholder-color;
+		}
+		
+		background-color: $input-bg;
+		color: $input-color;
+		
+		&:focus {
+			background-color: $input-bg-foc;
+			color: $input-color-foc;
+		}
+	}
+	
+	textarea {
+		min-height: $input-height * 2;
+		height: $input-height * 2;
+		
+		&:focus,
+		&.focus {
+			height: $input-height * 8;
+		}
+	}
+	
+	hr { margin-bottom: $input-m-bot; }
+}

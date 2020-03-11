@@ -1,0 +1,162 @@
+//////////////////////////////////////////////////
+////  Section Layout  ////////////////////////////
+//////////////////////////////////////////////////
+
+/* Section Defaults */
+
+#wrapper {
+	visibility: hidden;
+	@include opacity(0);
+	@include transition(all $main-tran-dur ease-out);
+	
+	&.ready {
+		visibility: visible;
+		@include opacity(1);
+	}
+}
+
+.section, .section-alt, #wrapper, .what_should_stuck {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.section, .section-alt, .what_should_stuck {
+	height: auto;
+}
+
+.what_should_stuck.stuck.bottom {
+	position: absolute !important;
+	top: auto !important;
+	bottom: 0 !important;
+}
+
+.section {
+	background-color: $bg-dark;
+}
+
+.section-alt {
+	background-color: $bg-dark-alt;
+}
+
+
+/* Section Sticky Image  */
+
+#section-img {
+	display: block;
+	position: absolute;
+	width: 33%;
+	height: 100%;
+	top: 0;
+	left: -62px;
+	z-index: 2;
+	background-position: 50% 20%;
+	background-size: cover;
+	visibility: hidden;
+	@include opacity(0);
+	@include transition(all ($main-tran-dur / 2) ease-out);
+	
+	.overlay {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.24);
+		@include transition(background-color $main-tran-dur ease-out);
+		
+		&.hard {
+			background-color: rgba(0, 0, 0, 0.64);
+			@include box-shadow(inset -10px 0 8px -8px rgba(0,0,0,.6));
+		}
+	}
+}
+
+
+/* Section Container */
+
+.section-content {
+	position: relative;
+	padding-top: $baseline * 4;
+	padding-bottom: $baseline * 4;
+	@include transition(all ($main-tran-dur / 2) ease-out);
+	
+	h1 {
+		line-height: $baselineX2;
+		margin-bottom: $baseline;
+		text-transform: capitalize;
+	}
+	
+	h2 {
+		line-height: $baseline + ($baseline / 3);
+		margin-bottom: ($baseline / 3) * 2;
+	}
+	
+	p {
+		line-height: $baseline + ($baseline / 3);
+	}
+}
+
+h1, .h1, h2, .h2 {
+	@include text-shadow($shadow-bg);
+}
+p, .p, span, li, th, td {
+	@include text-shadow($shadow-text);
+}
+
+
+/* Fake Place */
+
+ .place {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 2px;
+	height: 2px;
+}
+
+
+
+
+//////////////////////////////////////////////////
+////  Section Media Queries  /////////////////////
+//////////////////////////////////////////////////
+
+/* 991px Max Width Only */
+@media only screen and (max-width: 991px) {
+	#section-img-handler .sticky-wrapper {
+		height: 0 !important;
+	}
+}
+
+/* 481px Min Width */
+@media (min-width: 481px) {
+	.section-content {
+		padding-right: 56px;
+	}
+}
+
+/* 768px Min Width */
+@media (min-width: 768px) {}
+
+/* 992px Min Width */
+@media (min-width: 992px) {
+	.section, .section-alt, .what_should_stuck {
+		height: 100%;
+	}
+	
+	#section-img {
+		left: 0;
+		visibility: visible;
+		@include opacity(1);
+	}
+	
+	.section-content {
+		position: relative;
+		padding-top: 154px;
+		padding-bottom: 0;
+		padding-left: 34.3332%;
+	}
+}
+
+/* 1200px Min Width */
+@media (min-width: 1200px) {}

@@ -1,0 +1,39 @@
+//////////////////////////////////////////////////
+////  Other Layout  //////////////////////////////
+//////////////////////////////////////////////////
+
+/* Hint Edit */
+
+body {
+	[data-hint]:after {
+		@extend .heading-f-family;
+		font-weight: 700;
+		background: $text-light;
+		color: $bg-dark-alt;
+		@include text-shadow(none);
+		@include box-shadow($shadow-text);
+	}
+	
+	.hint--top:before { border-top-color: $text-light; }
+	.hint--bottom:before { border-bottom-color: $text-light; }
+	.hint--left:before { border-left-color: $text-light; }
+	.hint--right:before { border-right-color: $text-light; }
+	
+	.hint--top:before, .hint--top:after {
+		bottom: 100%;
+		left: 20%;
+	}
+}
+
+
+/* hr */
+
+hr, .hr {
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin: 0;
+	border: none;
+	background-color: $bg-light-alt;
+	@include box-shadow($shadow-bg);
+}
